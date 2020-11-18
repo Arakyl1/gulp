@@ -10,6 +10,7 @@ const gulpif = require('gulp-if');
 
 
 const style = [
+  './src/source/mixin.scss',
   './src/source/style.scss',
   './src/source/*.scss'
 ]   
@@ -23,12 +24,9 @@ module.exports = function styles() {
     .pipe(gulpif(!argv.prod, sourcemaps.init()))
     .pipe(scss())
     .pipe(autoprefixer({
-      overrideBrowserslist:  [ "last 4 version" ],
+      overrideBrowserslist:  [ "last 10 version" ],
       cascade: false}))
-      .pipe(gulpif(argv.prod, cleanCSS({
-        debug: true,
-        compatibility: '*'
-      }, details => {})))
+    .pipe(cleanCSS({level: 2}))
     .pipe(gulpif(!argv.prod, sourcemaps.write()))
     .pipe(gulp.dest('build/css'))
 };

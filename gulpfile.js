@@ -10,3 +10,5 @@ const serve = require('./gulp/tasks/serve');
 const dev = gulp.parallel(pug2html, script, styles, imageMinify,fonts);
 
 gulp.task('run', gulp.series(clean,dev, serve));
+gulp.task('s',styles)
+gulp.task('i', imageMinify)

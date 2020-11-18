@@ -13,10 +13,10 @@ module.exports = function imageMinify() {
     .pipe(imagemin([
       imagemin.gifsicle({interlaced: true}),
       imagemin.mozjpeg({
-        quality: 75,
+        quality: 70,
         progressive: true
       }),
-      imagemin.optipng({optimizationLevel: 5}),
+      imagemin.optipng({optimizationLevel: 15}),
       imagemin.svgo({
         plugins: [
           {removeViewBox: true},
